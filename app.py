@@ -737,7 +737,7 @@ def _parse_keyed_shape(payload: dict) -> list[UsageRow]:
         if pct is None:
             continue
         # Skip noise: zeros, and entries that are just promotional flags.
-        if pct < 0.5 and key not in ("five_hour", "seven_day"):
+        if pct < 0.5 and key not in ("five_hour", "seven_day", "seven_day_omelette"):
             continue
         label = LIMIT_LABELS.get(key, key.replace("_", " ").title())
         rows.append(UsageRow(label=label, percent=pct, resets_in=resets_in, key=key, raw={"key": key}))
